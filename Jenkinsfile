@@ -10,10 +10,11 @@ pipeline {
     stage('Print File Contents') {
       steps {
         script {
-          def fileContents = readFile filename: "${WORKSPACE}/C:/git_folder/repo_public_temp1/repo_public_temp1/three_manikanta.txt"
+          def fileContents = readFile filename: "C:\git_folder\repo_public_temp1\repo_public_temp1\three_manikanta.txt"
           echo "File contents: ${fileContents}"
         }
       }
     }
   }
 }
+
