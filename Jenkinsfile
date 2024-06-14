@@ -25,8 +25,8 @@ pipeline {
             steps {
                 script {
                     // Securely store Docker registry credentials in Jenkins Credentials Management
-                    withCredentials([usernamePassword(credentialsId: 'manikanta5315', usernameVariable: 'manikantaindukure@gmail.com', passwordVariable: '9618676960i')]) {
-                        bat "docker login -u ${manikanta5315} -p ${9618676960i} https://hub.docker.com" // Replace with your registry details and credentials ID
+                    withCredentials([usernamePassword(credentialsId: 'manikantaindukure@gmail.com', usernameVariable: 'manikanta5315', passwordVariable: '9618676960i')]) {
+                        bat "docker login -u ${manikantaindukure@gmail.com} -p ${9618676960i} https://hub.docker.com" // Replace with your registry details and credentials ID
                     }
                     bat 'docker push maniubuntuimage:latest'
                 }
