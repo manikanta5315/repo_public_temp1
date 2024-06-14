@@ -10,14 +10,14 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t maniubuntuimage:latest .' // Replace with your image name
+                bat 'docker build -t maniubuntuimage:latest .' // Replace with your image name
             }
         }
         stage('Run Tests (Optional)') {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    sh 'docker run -d --name containermaniubuntu -p 8011:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu -p 8011:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
@@ -26,9 +26,9 @@ pipeline {
                 script {
                     // Securely store Docker registry credentials in Jenkins Credentials Management
                     withCredentials([usernamePassword(credentialsId: 'manikantaindukure@gmail.com', usernameVariable: 'manikanta5315', passwordVariable: '9618676960i')]) {
-                        sh "docker login -u ${manikanta5315} -p ${9618676960i} https://hub.docker.com" // Replace with your registry details and credentials ID
+                        bat "docker login -u ${manikanta5315} -p ${9618676960i} https://hub.docker.com" // Replace with your registry details and credentials ID
                     }
-                    sh 'docker push maniubuntuimage:latest'
+                    bat 'docker push maniubuntuimage:latest'
                 }
             }
         }
