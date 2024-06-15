@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    bat 'docker run -d --name containermaniubuntu36 -p 8048:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu37 -p 8049:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                 script {
                     // Securely store Docker registry credentials in Jenkins Credentials Management
                     withCredentials([usernamePassword(credentialsId: 'manikanta5315-dockerhub', passwordVariable: 'DOCKER_USERNAME', usernameVariable: 'DOCKER_PASSWORD')]) {
-                       sh "docker login -u \${DOCKER_USERNAME} -p \${DOCKER_PASSWORD} https://hub.docker.com &"
+                       bat "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} https://hub.docker.com"
                         bat 'docker push maniubuntuimage:latest'
                     
                     }
