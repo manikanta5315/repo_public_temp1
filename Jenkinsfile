@@ -11,7 +11,7 @@ pipeline {
                     url: 'https://github.com/manikanta5315/repo_public_temp1.git' // Replace with your Git repository URL
             }
         }
-        stage('Building Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 bat 'docker build -t maniubuntuimage:latest .' // Replace with your image name
             }
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    bat 'docker run -d --name containermaniubuntu12 -p 8023:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu13 -p 8024:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
