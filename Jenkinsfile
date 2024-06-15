@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    bat 'docker run -d --name containermaniubuntu31 -p 8043:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu32 -p 8044:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
@@ -28,8 +28,8 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'manikanta5315-dockerhub', passwordVariable: 'DOCKER_USERNAME', usernameVariable: 'DOCKER_PASSWORD')]) {
                         env.DOCKER_USERNAME = username
                         env.DOCKER_PASSWORD = password
-                       sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} https://hub.docker.com"
-                        bat 'docker push maniubuntuimage:latest'
+                       sh "docker login -u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD} https://hub.docker.com"
+                        sh 'docker push maniubuntuimage:latest'
                     
                     }
                 }
