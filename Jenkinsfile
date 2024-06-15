@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    bat 'docker run -d --name containermaniubuntu27 -p 8040:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu26 -p 8039:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
