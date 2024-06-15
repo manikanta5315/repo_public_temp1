@@ -1,8 +1,5 @@
 pipeline {
     agent any  // Adjust if you need a specific agent (e.g., label)
-    environment {
-        DOCKERHUB_CREDINETIALS = CREDIENTIALS('manikanta5315-dockerhub')
-    }
 
     stages {
         stage('Checkout Code') {
@@ -20,19 +17,17 @@ pipeline {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
-                    bat 'docker run -d --name containermaniubuntu13 -p 8024:80 maniubuntuimage:latest sleep infinity'
+                    bat 'docker run -d --name containermaniubuntu14 -p 8025:80 maniubuntuimage:latest sleep infinity'
                 }
             }
         }
         stage('Deploy Image (Optional)') {
             steps {
                 script {
-                    
-                        bat """
-                        @ECHO OFF
-                        "docker login -u ${username} --password-stdin https://hub.docker.com" <<< %password% 
-                        """
-                    
+                    // Securely store Docker registry credentials in Jenkins Credentials Management
+                    withCredentials([usernamePassword(credentialsId: 'manikanta5315-dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
+                        bat "docker login -u ${username} --password-stdin https://hub.docker.com" // Replace with your registry details and credentials ID
+                    }
                     bat 'docker push maniubuntuimage:latest'
                 }
             }
