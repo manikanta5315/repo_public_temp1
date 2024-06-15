@@ -7,5 +7,5 @@ EXPOSE 81
 
 WORKDIR /var/www/html  
 
-CMD ["apache2",  "-f"] 
+CMD ["apache2", "-D", 'daemon off;'] 
   
