@@ -13,7 +13,7 @@ pipeline {
                 bat 'docker build -t maniubuntuimage:latest .' // Replace with your image name
             }
         }
-        stage('Run Tests (Optional)') {
+        stage('Run Tests (Option)') {
             steps {
                 script {
                     // Customize testing commands based on your framework and container environment
