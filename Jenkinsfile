@@ -2,7 +2,7 @@ pipeline {
     agent any  // Adjust if you need a specific agent (e.g., label)
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkingout Code') {
             steps {
                 git branch: 'master', // Replace with your branch name
                     url: 'https://github.com/manikanta5315/repo_public_temp1.git' // Replace with your Git repository URL
