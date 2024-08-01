@@ -8,7 +8,7 @@ pipeline {
                     url: 'https://github.com/manikanta5315/repo_public_temp1.git' // Replace with your Git repository URL
             }
         }
-        stage('Build Docker Image') {
+        stage('Building Docker Image') {
             steps {
                 bat 'docker build -t maniubuntuimage:latest .' // Replace with your image name
             }
